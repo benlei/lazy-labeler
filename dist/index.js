@@ -31071,12 +31071,14 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.ensureLabelsForIssue = exports.createMissingRepoLabels = void 0;
+const core = __importStar(__nccwpck_require__(2186));
 const github = __importStar(__nccwpck_require__(978));
 const createMissingRepoLabels = async (labels) => {
     const repoLabels = await github.getRepoLabels();
     const result = [];
     for (const label of labels) {
         if (!repoLabels.data.some(l => l.name === label.name)) {
+            core.info(`Creating label: ${label.name} with color: ${label.color}`);
             await github.createLabel(label.name, label.color);
             result.push(label.name);
         }
@@ -31093,6 +31095,7 @@ const ensureLabelsForIssue = async (issueNumber, labels) => {
         }
     }
     if (result.length) {
+        core.info(`Adding labels to issue: ${result.join(', ')}`);
         await github.addLabelsToIssue(issueNumber, result);
     }
     return result;
