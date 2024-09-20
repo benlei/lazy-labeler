@@ -34,13 +34,13 @@ describe('getLabels', () => {
   it('processes labels properly', () => {
     jest.spyOn(inputs, 'labelsInput').mockReturnValue('foo,bar,,baz,foo,foo,')
 
-    expect(getLabels()).toHaveLength(5)
+    expect(getLabels()).toHaveLength(3)
     expect(getLabels()).toEqual([
       { name: 'foo', color: 'e65213' },
       { name: 'bar', color: 'c11635' },
-      { name: 'baz', color: '61dedb' },
-      { name: 'foo', color: 'e65213' },
-      { name: 'foo', color: 'e65213' }
+      { name: 'baz', color: '61dedb' }
     ])
+
+    expect(getLabels()[0]).toEqual({ name: 'foo', color: 'e65213' })
   })
 })
