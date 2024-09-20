@@ -79,9 +79,13 @@ jobs:
           script: |
             const labels = ['test123', 'foo-bar-baz', 'hello-world'];
             for (const label of labels) {
-              await github.rest.issues.deleteLabel({
-                owner: 'benlei',
-                repo: 'internal-issues',
-                name: label
-              });
+              try {
+                await github.rest.issues.deleteLabel({
+                  owner: 'benlei',
+                  repo: 'internal-issues',
+                  name: label
+                });
+              } catch (err) {
+                console.error(err);
+              }
             }

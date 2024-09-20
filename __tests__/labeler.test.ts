@@ -8,9 +8,9 @@ describe('createMissingRepoLabels', () => {
   })
   it('creates missing labels', async () => {
     const labels = [
-      { name: 'foo', color: '#e65213' },
-      { name: 'bar', color: '#c11635' },
-      { name: 'baz', color: '#61dedb' }
+      { name: 'foo', color: 'e65213' },
+      { name: 'bar', color: 'c11635' },
+      { name: 'baz', color: '61dedb' }
     ]
     const repoLabels = { data: [{ name: 'foo' }, { name: 'baz' }] }
     jest.spyOn(github, 'getRepoLabels').mockResolvedValue(repoLabels)
@@ -21,8 +21,8 @@ describe('createMissingRepoLabels', () => {
 
   it('creates nothing if they all exist', async () => {
     const labels = [
-      { name: 'foo', color: '#e65213' },
-      { name: 'baz', color: '#61dedb' }
+      { name: 'foo', color: 'e65213' },
+      { name: 'baz', color: '61dedb' }
     ]
     const repoLabels = { data: [{ name: 'foo' }, { name: 'baz' }] }
     jest.spyOn(github, 'getRepoLabels').mockResolvedValue(repoLabels)
@@ -39,9 +39,9 @@ describe('ensureLabelsForIssue', () => {
 
   it('adds missing labels', async () => {
     const labels = [
-      { name: 'foo', color: '#e65213' },
-      { name: 'bar', color: '#c11635' },
-      { name: 'baz', color: '#61dedb' }
+      { name: 'foo', color: 'e65213' },
+      { name: 'bar', color: 'c11635' },
+      { name: 'baz', color: '61dedb' }
     ]
     const issueLabels = { data: [{ name: 'foo' }, { name: 'baz' }] }
     jest.spyOn(github, 'getLabelsForIssue').mockResolvedValue(issueLabels)
@@ -52,8 +52,8 @@ describe('ensureLabelsForIssue', () => {
 
   it('adds nothing if they all exist', async () => {
     const labels = [
-      { name: 'foo', color: '#e65213' },
-      { name: 'baz', color: '#61dedb' }
+      { name: 'foo', color: 'e65213' },
+      { name: 'baz', color: '61dedb' }
     ]
     const issueLabels = { data: [{ name: 'foo' }, { name: 'baz' }] }
     jest.spyOn(github, 'getLabelsForIssue').mockResolvedValue(issueLabels)

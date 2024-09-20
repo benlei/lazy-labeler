@@ -31033,7 +31033,7 @@ const getLabels = () => {
         .split(',')
         .map(label => ({
         name: label.trim(),
-        color: string2HexCodeColor.stringToColor(label.trim())
+        color: string2HexCodeColor.stringToColor(label.trim()).substring(1)
     }));
 };
 exports.getLabels = getLabels;
@@ -31078,7 +31078,7 @@ const createMissingRepoLabels = async (labels) => {
     const result = [];
     for (const label of labels) {
         if (!repoLabels.data.some(l => l.name === label.name)) {
-            core.info(`Creating label: ${label.name} with color: ${label.color}`);
+            core.info(`Creating label: ${label.name} with color ${label.color}`);
             await github.createLabel(label.name, label.color);
             result.push(label.name);
         }

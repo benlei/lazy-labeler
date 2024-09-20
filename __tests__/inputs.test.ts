@@ -36,12 +36,12 @@ describe('getLabels', () => {
 
     expect(getLabels()).toHaveLength(6)
     expect(getLabels()).toEqual([
-      { name: 'foo', color: '#e65213' },
-      { name: 'bar', color: '#c11635' },
-      { name: 'baz', color: '#61dedb' },
-      { name: 'foo', color: '#e65213' },
-      { name: 'foo', color: '#e65213' },
-      { name: '', color: '#300000' }
+      { name: 'foo', color: 'e65213' },
+      { name: 'bar', color: 'c11635' },
+      { name: 'baz', color: '61dedb' },
+      { name: 'foo', color: 'e65213' },
+      { name: 'foo', color: 'e65213' },
+      { name: '', color: '300000' }
     ])
   })
 })
