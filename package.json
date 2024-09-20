@@ -1,7 +1,7 @@
 {
   "name": "add-labels-deterministically",
-  "description": "Adds labels to an issue. Tries to create label if it doesn't exist in repo with a deterministic color, but skips if it already exists.",
-  "version": "1.0.0",
+  "description": "Adds labels to an issue. Creates label if it does not exist with a deterministic color.",
+  "version": "1.0.1",
   "author": "benlei",
   "private": true,
   "homepage": "https://github.com/benlei/add-labels-deterministically",

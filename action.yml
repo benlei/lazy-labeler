@@ -1,7 +1,7 @@
 name: 'Add Labels Deterministically'
 description:
-  'Adds labels to an issue. Tries to create label if it does not exist in repo
-  with a deterministic color, but skips if it already exists.'
+  'Adds labels to an issue. Creates label if it does not exist with a
+  deterministic color.'
 author: 'benlei'
 
 # Add your action's branding here. This will appear on the GitHub Marketplace.
