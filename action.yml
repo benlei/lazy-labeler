@@ -1,5 +1,7 @@
 name: 'Add Labels Deterministically'
-description: 'Adds labels to an issue, but the color of the label will always be generated deterministically. If label does not exist this will try to create it.'
+description:
+  'Adds labels to an issue. Tries to create label if it does not exist in repo
+  with a deterministic color, but skips if it already exists.'
 author: 'benlei'
 
 # Add your action's branding here. This will appear on the GitHub Marketplace.
@@ -20,9 +22,14 @@ inputs:
   issue-number:
     description: 'The issue number to add the label to.'
     required: true
+    default: ${{ github.event.issue.number }}
   labels:
     description: 'The labels to add to the issue, separated by a comma.'
     required: true
+  fail-on-error:
+    description: 'Whether to fail if an error occurs.'
+    required: false
+    default: 'false'
 
 runs:
   using: node20
