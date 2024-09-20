@@ -1,23 +1,28 @@
-name: 'The name of your action here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'Add Labels Deterministically'
+description: 'Adds labels to an issue, but the color of the label will always be generated deterministically. If label does not exist this will try to create it.'
+author: 'benlei'
 
 # Add your action's branding here. This will appear on the GitHub Marketplace.
 branding:
-  icon: 'heart'
-  color: 'red'
+  icon: 'play'
+  color: 'blue'
 
 # Define your inputs here.
 inputs:
-  milliseconds:
-    description: 'Your input description here'
+  repository:
+    description: 'The repository to add the label to.'
+    required: false
+    default: ${{ github.repository }}
+  token:
+    description: 'The GitHub token to use for authentication.'
     required: true
-    default: '1000'
-
-# Define your outputs here.
-outputs:
-  time:
-    description: 'Your output description here'
+    default: ${{ github.token }}
+  issue-number:
+    description: 'The issue number to add the label to.'
+    required: true
+  labels:
+    description: 'The labels to add to the issue, separated by a comma.'
+    required: true
 
 runs:
   using: node20
