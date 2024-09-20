@@ -31031,6 +31031,8 @@ const getLabels = () => {
     const string2HexCodeColor = new string_to_hex_code_color_1.String2HexCodeColor();
     return (0, exports.labelsInput)()
         .split(',')
+        .map(l => l.trim())
+        .filter(l => l)
         .map(label => ({
         name: label.trim(),
         color: string2HexCodeColor.stringToColor(label.trim()).substring(1)

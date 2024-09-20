@@ -50,6 +50,8 @@ export const getLabels = (): Label[] => {
 
   return labelsInput()
     .split(',')
+    .map(l => l.trim())
+    .filter(l => l)
     .map(label => ({
       name: label.trim(),
       color: string2HexCodeColor.stringToColor(label.trim()).substring(1)
