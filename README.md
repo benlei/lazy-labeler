@@ -17,13 +17,13 @@ Then it'll try to add any labels that are not currently present on the issue.
 
 <!-- markdownlint-disable MD013 -->
 
-| Input Name      | Required | Default                            | Description                                               |
-| --------------- | -------- | ---------------------------------- | --------------------------------------------------------- |
-| `repository`    | no       | `${{ github.repository }}`         | The repository to find issue in                           |
-| `token`         | no       | `${{ github.token }}`              | The GitHub token to use for calling GitHub's API          |
-| `issue-number`  | yes      | `${{ github.event.issue.number }}` | The issue number                                          |
-| `labels`        | yes      | n/a                                | Comma separated list of labels to add to issue/repository |
-| `fail-on-error` | no       | `false`                            | Whether or not to fail action if any error occurs         |
+| Input Name      | Required | Default                            | Description                                                                                                      |
+| --------------- | -------- | ---------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `repository`    | no       | `${{ github.repository }}`         | The repository to find issue in                                                                                  |
+| `token`         | no       | `${{ github.token }}`              | The GitHub token to use for calling GitHub's API                                                                 |
+| `issue-number`  | yes      | `${{ github.event.issue.number }}` | The issue number                                                                                                 |
+| `labels`        | yes      | n/a                                | Comma separated list of labels to add to issue/repository. Any label greater than 50 characters will be ignored. |
+| `fail-on-error` | no       | `false`                            | Whether or not to fail action if any error occurs                                                                |
 
 <!-- markdownlint-enable MD013 -->
 

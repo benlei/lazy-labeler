@@ -31032,7 +31032,7 @@ const getLabels = () => {
     return (0, exports.labelsInput)()
         .split(',')
         .map(l => l.trim())
-        .filter(l => l)
+        .filter(l => l && l.length <= 50)
         .filter((x, i, a) => a.indexOf(x) == i)
         .map(label => ({
         name: label,

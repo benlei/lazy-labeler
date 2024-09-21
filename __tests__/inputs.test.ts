@@ -32,15 +32,21 @@ describe('repository', () => {
 
 describe('getLabels', () => {
   it('processes labels properly', () => {
-    jest.spyOn(inputs, 'labelsInput').mockReturnValue('foo,bar,,baz,foo,foo,')
+    jest
+      .spyOn(inputs, 'labelsInput')
+      .mockReturnValue(
+        `     foo   ,bar,,baz,foo,   ${new Array(52).join('a')}   , ${new Array(51).join('b')} ,foo,`
+      )
 
-    expect(getLabels()).toHaveLength(3)
+    expect(getLabels()).toHaveLength(4)
     expect(getLabels()).toEqual([
       { name: 'foo', color: 'e65213' },
       { name: 'bar', color: 'c11635' },
-      { name: 'baz', color: '61dedb' }
+      { name: 'baz', color: '61dedb' },
+      { name: new Array(51).join('b'), color: '4072c6' }
     ])
 
+    jest.spyOn(inputs, 'labelsInput').mockReturnValue('foo')
     expect(getLabels()[0]).toEqual({ name: 'foo', color: 'e65213' })
   })
 })
