@@ -31154,11 +31154,15 @@ async function run() {
         await (0, labeler_1.ensureLabelsForIssue)((0, inputs_1.issueNumberInput)(), labels);
     }
     catch (error) {
-        // Fail the workflow run if an error occurs
-        if ((0, inputs_1.failOnErrorInput)())
-            core.setFailed(`Received error: ${error}`);
-        else
-            core.warning(`Received error: ${error}`);
+        if (error instanceof Error) {
+            if ((0, inputs_1.failOnErrorInput)()) {
+                // Fail the workflow run if an error occurs
+                core.setFailed(`Received error: ${error.message}`);
+            }
+            else {
+                core.warning(`Received error: ${error.message}`);
+            }
+        }
     }
 }
 

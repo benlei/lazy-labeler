@@ -12,8 +12,13 @@ export async function run(): Promise<void> {
     await createMissingRepoLabels(labels)
     await ensureLabelsForIssue(issueNumberInput(), labels)
   } catch (error) {
-    // Fail the workflow run if an error occurs
-    if (failOnErrorInput()) core.setFailed(`Received error: ${error}`)
-    else core.warning(`Received error: ${error}`)
+    if (error instanceof Error) {
+      if (failOnErrorInput()) {
+        // Fail the workflow run if an error occurs
+        core.setFailed(`Received error: ${error.message}`)
+      } else {
+        core.warning(`Received error: ${error.message}`)
+      }
+    }
   }
 }

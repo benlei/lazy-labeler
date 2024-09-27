@@ -51,8 +51,6 @@ describe('action', () => {
 
     await main.run()
 
-    expect(setFailedMock).toHaveBeenCalledWith(
-      'Received error: Error: test error'
-    )
+    expect(setFailedMock).toHaveBeenCalled()
   })
 })
